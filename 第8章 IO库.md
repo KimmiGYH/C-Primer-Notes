@@ -12,8 +12,8 @@
     - [8.2.1 使用文件流对象](#821-使用文件流对象)
     - [8.2.2 文件模式](#822-文件模式)
   - [8.3 `string`流](#83-string流)
-    - [8.3.1 使用istringstream](#831-使用istringstream)
-    - [8.3.2 使用ostringstream](#832-使用ostringstream)
+    - [8.3.1 使用`istringstream`](#831-使用istringstream)
+    - [8.3.2 使用`ostringstream`](#832-使用ostringstream)
 
 <!-- /TOC -->
 
@@ -98,7 +98,20 @@ while (cin >> word)
 
 #### 查询流的状态
 
+`IO`库定义了一个与机器无关的`iostate`类型，它提供了表达流状态的完整功能。
+
+`badbit`表示系统级错误，如不可恢复的读写错误。通常情况下，一旦`badbit`被置位，流就无法再使用了。
+在发生可恢复错误后，`failbit`被置位，如期望读取数值却读出一个字符等错误。
+
+如果到达文件结束为止，`eofbit`和`failbit`都会被置位。
+
+`goodbit`的值为`0`，表示流未发生错误。
+
+如果`badbit`、`failbit`和`eofbit`任一个被置位，则检测流状态的条件会失败。
+
 #### 管理条件状态
+
+
 
 ### 8.1.3 管理输出缓冲
 
@@ -110,6 +123,6 @@ while (cin >> word)
 
 ## 8.3 `string`流
 
-### 8.3.1 使用istringstream
+### 8.3.1 使用`istringstream`
 
-### 8.3.2 使用ostringstream
+### 8.3.2 使用`ostringstream`

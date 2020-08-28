@@ -802,3 +802,43 @@ cout << c1 << endl;
 
 #endif
 ```
+
+## 7. 三大函数：拷贝构造、拷贝复制、析构
+
+Class without pointer members(s)
+    `complex`
+
+Class with pointer member(s)
+    `string`
+
+
+```cpp
+// string.h
+#ifndef __MYSTRING__
+#define __MYSTRING__
+
+class String
+{
+    //...
+};
+
+String::function(...) ...
+Global-function(...) ...
+
+#endif
+```
+
+```cpp
+// string-test.cpp
+int main()
+{
+    String s1(),
+    String s2("hello");
+
+    String s3(s1);
+    cout << s3 << endl;
+    s3 = s2;
+    cout << s3 << endl;
+}
+```
+

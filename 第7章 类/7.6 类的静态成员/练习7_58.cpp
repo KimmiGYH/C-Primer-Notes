@@ -26,7 +26,7 @@ class Example {
 public:
     double rate;
     static const int vecSize = 20;
-    vector<double> vec(vecSize);
+    vector<double> vec;
 };
 
 // example.C

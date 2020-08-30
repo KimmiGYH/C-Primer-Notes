@@ -1,8 +1,11 @@
 # C++_Primer_Notes
 
+
 ```cpp
 srand( (unsigned) time (NULL)); // 生成随机数种子
 ```
+
+
 
 - 第1章 开始
 - 第2章 变量和基本类型

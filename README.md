@@ -1,11 +1,14 @@
 # C++_Primer_Notes
 
-
 ```cpp
 srand( (unsigned) time (NULL)); // 生成随机数种子
 ```
 
-
+```cpp
+// 判断奇偶性的两种方法
+if (*curr & 1)  // 位与
+if (*curr % 2)  // 模2
+```
 
 - 第1章 开始
 - 第2章 变量和基本类型
@@ -14,3 +17,5 @@ srand( (unsigned) time (NULL)); // 生成随机数种子
 - 第5章 语句
 - 第6章 函数
 - 第7章 类
+- 第8章 IO库
+- 第9章 顺序容器

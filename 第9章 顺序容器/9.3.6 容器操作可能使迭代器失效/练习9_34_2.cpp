@@ -1,0 +1,24 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+    vector<int> vi = {1,2,3,4,5,6,7,8,9};
+    auto iter = vi.begin();
+    string tmp;
+    while (iter != vi.end()) {
+        if (*iter % 2)
+            iter = vi.insert(iter, *iter);
+        ++iter;
+        for (auto begin = vi.begin(); begin != vi.end(); begin++)
+            cout << *begin << " ";
+        cout << endl;
+        cin >> tmp;
+        // cin>>tmp 是为了让程序暂停，程序员有时间观察输出
+        // 需要继续执行程序时，随意输入一个字符串即可
+    }
+    
+    return 0;
+}

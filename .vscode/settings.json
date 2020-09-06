@@ -39,6 +39,7 @@
         "vector": "cpp",
         "cctype": "cpp",
         "ctime": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "algorithm": "cpp"
     }
 }

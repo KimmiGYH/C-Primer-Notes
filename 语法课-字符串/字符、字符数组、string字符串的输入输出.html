@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Markmap</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+#mindmap {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.1.4/dist/style.min.css">
+</head>
+<body>
+<svg id="mindmap"></svg>
+<script src="https://cdn.jsdelivr.net/npm/d3@6.3.1"></script><script src="https://cdn.jsdelivr.net/npm/markmap-view@0.2.2"></script><script>(getMarkmap => {
+          window.WebFontConfig = {
+            custom: {
+              families: ['KaTeX_AMS', 'KaTeX_Caligraphic:n4,n7', 'KaTeX_Fraktur:n4,n7', 'KaTeX_Main:n4,n7,i4,i7', 'KaTeX_Math:i4,i7', 'KaTeX_Script', 'KaTeX_SansSerif:n4,n7,i4', 'KaTeX_Size1', 'KaTeX_Size2', 'KaTeX_Size3', 'KaTeX_Size4', 'KaTeX_Typewriter']
+            },
+            active: () => {
+              getMarkmap().refreshHook.call();
+            }
+          };
+        })(() => window.markmap)</script><script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" defer></script><script src="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.1.4/dist/index.umd.min.js"></script><script>(r => {
+                setTimeout(r);
+              })(function anonymous(
+) {
+const toolbar = new markmap.Toolbar();
+toolbar.attach(mm);
+const el = toolbar.render();
+el.setAttribute('style', 'position:absolute;bottom:20px;right:20px');
+document.body.append(el);
+})</script><script>((getMarkmap, getOptions, data) => {
+        const {
+          Markmap
+        } = getMarkmap();
+        window.mm = Markmap.create('svg#mindmap', getOptions == null ? void 0 : getOptions(), data);
+      })(() => window.markmap,null,{"t":"heading","d":1,"p":{},"v":"字符、字符数组、stirng字符串的输入输出","c":[{"t":"heading","d":2,"p":{},"v":"字符 <code>char ch;</code>","c":[{"t":"list_item","d":4,"p":{},"v":"输入：<code>scanf(&quot;%c&quot;, &amp;ch);</code> 或 <code>cin &gt;&gt; ch;</code>"},{"t":"list_item","d":4,"p":{},"v":"","c":[{"t":"list_item","d":6,"p":{},"v":"过滤掉回车：<code>scanf(&quot;\\n%c&quot;, &amp;c);</code>"}]},{"t":"list_item","d":4,"p":{},"v":"输出：<code>printf(&quot;%c&quot;, ch);</code> 或 <code>cout &lt;&lt; ch;</code>"}]},{"t":"heading","d":2,"p":{},"v":"字符数组 <code>char s[31]</code>","c":[{"t":"heading","d":3,"p":{},"v":"单个","c":[{"t":"list_item","d":5,"p":{},"v":"输入：<code>scanf(&quot;%s&quot;, s);</code> 或 <code>cin &gt;&gt; s;</code>"},{"t":"list_item","d":5,"p":{},"v":"","c":[{"t":"list_item","d":7,"p":{},"v":"从下标<code>1</code>开始读入：<code>scanf(&quot;%s&quot;, s + 1);</code> 或 <code>cin &gt;&gt; s + 1</code>"}]},{"t":"list_item","d":5,"p":{},"v":"输出：<code>printf(&quot;%s\\n&quot;, s);</code> 或 <code>cout &lt;&lt; s;</code>"},{"t":"list_item","d":5,"p":{},"v":"","c":[{"t":"list_item","d":7,"p":{},"v":"从下标<code>1</code>开始输出：<code>printf(&quot;%s\\n&quot;, s + 1);</code> 或 <code>cout &lt;&lt; s + 1;</code>"}]}]},{"t":"heading","d":3,"p":{},"v":"一整行","c":[{"t":"list_item","d":5,"p":{},"v":"输入：<code>fgets(s, 31, stdin);</code> 或 <code>cin.getline(s, 31);</code>"},{"t":"list_item","d":5,"p":{},"v":"输出：<code>printf(&quot;%s&quot;, s);</code> 或 <code>cout &lt;&lt; s;</code> 或 <code>puts(s);</code>"},{"t":"list_item","d":5,"p":{},"v":"","c":[{"t":"list_item","d":7,"p":{},"v":"注：<code>puts(s);</code> (自动补上换行符) 等价于 <code>printf(&quot;%s\\n&quot;, s);</code>"}]}]},{"t":"heading","d":3,"p":{},"v":"字符数组的常见操作","c":[{"t":"list_item","d":5,"p":{},"v":"<code>(1) strlen(str);</code> 求长度 <span class=\"katex\"><span class=\"katex-mathml\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>O</mi><mo stretchy=\"false\">(</mo><mi>n</mi><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O(n)</annotation></semantics></math></span><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:1em;vertical-align:-0.25em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.02778em;\">O</span><span class=\"mopen\">(</span><span class=\"mord mathnormal\">n</span><span class=\"mclose\">)</span></span></span></span>"},{"t":"list_item","d":5,"p":{},"v":"<code>(2) strcmp(a, b);</code> 比较"},{"t":"list_item","d":5,"p":{},"v":"<code>(3) strcpy(a, b);</code> 将后者复制给前者"}]}]},{"t":"heading","d":2,"p":{},"v":"string 字符串","c":[{"t":"heading","d":3,"p":{},"v":"单个","c":[{"t":"list_item","d":5,"p":{},"v":"输入：<code>cin &gt;&gt; s;</code> 不能用 <code>scanf</code> 读入"},{"t":"list_item","d":5,"p":{},"v":"输出：<code>cout &lt;&lt; s</code> 或 <code>printf(&quot;%s&quot;, s.c_str());</code>  或 <code>puts(s.c_str());</code>"},{"t":"list_item","d":5,"p":{},"v":"","c":[{"t":"list_item","d":7,"p":{},"v":"注：<code>c_str()</code>返回字符数组首地址"}]}]},{"t":"heading","d":3,"p":{},"v":"一整行","c":[{"t":"list_item","d":5,"p":{},"v":"输入：<code>getline(cin, s);</code> (用<code>cin</code>只能读入第一个字符串)"},{"t":"list_item","d":5,"p":{},"v":"输出：<code>cout &lt;&lt; s;</code>"}]}]},{"t":"heading","d":2,"p":{},"v":"字符串流 <code>stringstream</code>","c":[{"t":"list_item","d":4,"p":{},"v":"头文件：<code>#include &lt;sstream&gt;</code>"},{"t":"list_item","d":4,"p":{},"v":"输入：<code>stringstream ssin(s);</code>"}]}]})</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+void name_string(string& name, const string& prefix, const string& suffix)
+{
+    /*  使用 isnert，0 等价于 begin()，都是在当前首字符之前插入新字符串；
+        size() 等价于 end()，都是在末尾追加新字符串。    */
+    name.insert(0, " ");
+    name.insert(0, prefix);             // 插入前缀
+    name.insert(name.size(), " ");
+    name.insert(name.size(), suffix);   // 插入后缀
+}
+
+int main()
+{
+    string name = "James Bond";
+    name_string(name, "Mr.", "II");
+    cout << name << endl; // Mr. James Bond II
+
+    name = "M";
+    name_string(name, "Mrs.", "III");
+    cout << name << endl; // Mrs. M III
+
+    return 0;
+}

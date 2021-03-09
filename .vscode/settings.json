@@ -40,6 +40,7 @@
         "cctype": "cpp",
         "ctime": "cpp",
         "string": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "map": "cpp"
     }
 }

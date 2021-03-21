@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
         vd.push_back(val);
     
     cout << "The sum of the floats in the sequence is: " 
-         << accumulate(vd.begin(), vd.end(), 0) << endl;
+         << accumulate(vd.begin(), vd.end(), 0.0) << endl;
 
     return 0;
 }

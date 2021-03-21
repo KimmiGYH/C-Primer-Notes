@@ -14,7 +14,7 @@ strdup 不是标准的c函数。strdup() 在内部调用了 malloc() 为变量�
 
 #include <iostream>
 #include <algorithm>
-#include <string>
+#include <string.h>
 
 using namespace std;
 
@@ -23,12 +23,8 @@ int main(int argc, char *argv[])
     char *p[] = { "Hello", "World", "!" };
     char *q[] = { strdup(p[0]), strdup(p[1]), strdup(p[2]) };
     char *r[] = { p[0], p[1], p[2] };
-    cout << equal(begin(p), end(p), q) << endl;
-    cout << equal(begin(p), end(p), r) << endl;
+    cout << equal(begin(p), end(p), q) << endl; //输出 0
+    cout << equal(begin(p), end(p), r) << endl; //输出 1
 
     return 0;
 }
-
-/*运行代码遇到了错误：
-error: 'strdup' was not declared in this scope
-不知道怎么回事，先放着 */

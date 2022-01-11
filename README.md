@@ -1,17 +1,5 @@
 # C++_Primer_Notes
 
-`git commit --amend` 修改提交信息
-
-```cpp
-srand( (unsigned) time (NULL)); // 生成随机数种子
-```
-
-```cpp
-// 判断奇偶性的两种方法
-if (*curr & 1)  // 位与
-if (*curr % 2)  // 模2
-```
-
 - 第1章 开始
 - 第2章 变量和基本类型
 - 第3章 字符串、向量和数组

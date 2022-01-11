@@ -1,5 +1,3 @@
-# C++基础语法笔记
-
 ## 第一讲 变量、输入输出、表达式与顺序语句
 
 ### 0. `scanf` 和 `cin` 的区别
@@ -1983,4 +1981,160 @@ int main()
     return 0;
 }
 
+```
+
+### 55. `0x3f3f3f3f`
+
+- `0x3f3f3f3f` 的十进制是 $1061109567$，也就是 $10^{9}$  级别的（和 `0x7fffffff` 一个数量级），而一般场合下的数据都是小于 $10^{9}$ 的，所以它可以作为无穷大使用而不致出现数据大于无穷大的情形。
+
+- 另一方面，由于一般的数据都不会大于 $10^{9}$，所以当我们把无穷大加上一个数据时，它并不会溢出（这就满足了“无穷大加一个有穷的数依然是无穷大”），事实上 `0x3f3f3f3f` + `0x3f3f3f3f` $= 2122219134$，这非常大但却没有超过 32-bit int的表示范围，所以 `0x3f3f3f3f` 还满足了我们“无穷大加无穷大还是无穷大”的需求。
+
+- 最后，`0x3f3f3f3f` 还能给我们带来一个意想不到的额外好处：如果我们想要将某个数组清零，我们通常会使 用 `memset(a, 0, sizeof a)` 这样的代码来实现（方便而高效），但是当我们想将某个数组全部赋值为无穷大时（例如解决图论问题时邻接矩阵的初始化），就不能使用memset函数而得自己写循环了，我们知道这是因为 `memset` 是按字节操作的，它能够对数组清零是因为 $0$ 的每个字节都是 $0$，现在好了，如果我们将无穷大设为 `0x3f3f3f3f`，那么奇迹就发生了，`0x3f3f3f3f` 的每个字节都是 `0x3f`！所以要把一段内存全部置为无穷大，我们只需要 `memset(a, 0x3f, sizeof a)`。所以在通常的场合下，`const int INF = 0x3f3f3f3f;` 真的是一个非常棒的选择。
+
+### 56. STL 函数
+
+```
+vector（变长数组），倍增的思想，支持比较运算（按字典序）
+    定义：：
+        vector <int> a; 定义：一个vector数组a
+        vector <int> a(10); 定义：一个长度为10的vector数组a
+        vector <int> a(10,3); 定义：一个长度为10的vector数组a，并且所有元素都为3
+    常用函数：：
+        size(); 返回元素个数
+        empty(); 返回是否是空
+        clear(); 清空
+        front(); 返回vector的第一个数
+        back(); 返回vector的最后一个数
+        push_back(); 向vector的最后插入一个数
+        pop_back(); 把vector的最后一个数删掉
+        begin(); vector的第0个数
+        end(); vector的最后一个的数的后面一个数
+    倍增的思想：
+        系统为某一程序分配空间是，所需时间，与空间大小无关，与申请次数有关
+    遍历方法
+        假设有个vector <int> a;
+        第一种：
+            for(int i = 0;i < a.size();i ++) cout<<a[i]<<" ";
+        第二种：
+            for(vector <int>::iterator i = a.begin();i != a.end();i ++) cout<<*i<<" ";  vector <int>::iterator可以写为auto
+        第三种：
+            for(auto  x : a) cout<<x<<" ";
+
+pair，支持比较运算，以first为第一关键字，以second为第二关键字（按字典序）
+    定义：：
+        pair <类型,类型> 变量名;    两个类型可以不同
+    初始化方式：
+        假设有个pair <int,string> p;
+        第一种：
+            p = make_pair(10,"abc");
+        第二种：
+            p = {10,"abc");
+    常用函数：：
+        first(); 第一个元素
+        second(); 第二个元素
+
+string（字符串）
+    常用函数：：
+        substr(); 返回每一个子串
+        c_str(); 返回这个string对应的字符数组的头指针
+        size(); 返回字母个数
+        length(); 返回字母个数
+        empty(); 返回字符串是否为空
+        clear(); 把字符串清空
+queue（队列）
+    定义：：
+        queue <类型> 变量名;
+    常用函数：：
+        size(); 这个队列的长度
+        empty(); 返回这个队列是否为空
+        push(); 往队尾插入一个元素
+        front(); 返回队头元素
+        back(); 返回队尾元素
+        pop(); 把队头弹出
+        注意：队列没有clear函数！！！
+    清空：
+        变量名 = queue <int> ();
+priority_queue（优先队列，堆）
+    注意：默认是大根堆！！！
+    定义：：
+        大根堆：priority_queue <类型> 变量名;
+        小根堆：priority_queue <类型,vecotr <类型>,greater <类型>> 变量名
+    常用函数：
+        size(); 这个堆的长度
+        empty(); 返回这个堆是否为空
+        push();往堆里插入一个元素
+        top(); 返回堆顶元素
+        pop(); 弹出堆顶元素
+        注意：堆没有clear函数！！！
+
+stack（栈）
+    常用函数：
+        size(); 这个栈的长度
+        empty(); 返回这个栈是否为空
+        push(); 向栈顶插入一个元素
+        top(); 返回栈顶元素
+        pop(); 弹出栈顶元素
+
+deque（双端队列）
+    常用函数：
+        size(); 这个双端队列的长度
+        empty(); 返回这个双端队列是否为空
+        clear(); 清空这个双端队列
+        front(); 返回第一个元素
+        back(); 返回最后一个元素
+        push_back(); 向最后插入一个元素
+        pop_back(); 弹出最后一个元素
+        push_front(); 向队首插入一个元素
+        pop_front(); 弹出第一个元素
+        begin(); 双端队列的第0个数
+        end(); 双端队列的最后一个的数的后面一个数
+
+set，map，multiset，multimap 基于平衡二叉树（红黑树），动态维护有序序列
+    set/multiset
+        注意：set不允许元素重复，如果有重复就会被忽略，但multiset允许！！！
+        常用函数：
+            size(); 返回元素个数
+            empty(); 返回set是否是空的
+            clear(); 清空
+            begin(); 第0个数，支持++或--，返回前驱和后继
+            end(); 最后一个的数的后面一个数，支持++或--，返回前驱和后继
+            insert(); 插入一个数
+            find(); 查找一个数
+            count(); 返回某一个数的个数
+            erase();
+                （1）输入是一个数x，删除所有x    O(k + log n)
+                （2）输入一个迭代器，删除这个迭代器
+            lower_bound(x); 返回大于等于x的最小的数的迭代器
+            upper_bound(x); 返回大于x的最小的数的迭代器
+    map/multimap
+        常用函数：
+            insert(); 插入一个数，插入的数是一个pair
+            erase(); 
+                （1）输入是pair
+                （2）输入一个迭代器，删除这个迭代器
+            find(); 查找一个数
+            lower_bound(x); 返回大于等于x的最小的数的迭代器
+            upper_bound(x); 返回大于x的最小的数的迭代器
+
+unordered_set，unordered_map，unordered_muliset,unordered_multimap 基于哈希表
+    和上面类似，增删改查的时间复杂度是O(1)
+    不支持lower_bound()和upper_bound()
+
+bitset 压位
+    定义：
+        bitset <个数> 变量名;
+    支持：
+        ~，&，|，^
+        >>，<<
+        ==，!=
+        []
+    常用函数：
+        count(); 返回某一个数的个数
+        any(); 判断是否至少有一个1
+        none(); 判断是否全为0
+        set(); 把所有位置赋值为1
+        set(k,v); 将第k位变成v
+        reset(); 把所有位变成0
+        flip(); 把所有位取反，等价于~
+        flip(k); 把第k位取反
 ```
